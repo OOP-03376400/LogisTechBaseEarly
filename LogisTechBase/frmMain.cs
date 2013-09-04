@@ -14,7 +14,21 @@ namespace LogisTechBase
         public frmMain()
         {
             InitializeComponent();
+            Color c = Color.FromArgb(232, 245, 251);
+            this.BackColor = c;
+            this.axShockwaveFlash1.BGColor = "e8f5fb";
+            //this.axShockwaveFlash1.BGColor = "96d3fd";
 
+            //this.menuStrip1.BackColor = c;
+            //this.statusStrip1.BackColor = c;
+            this.Shown += new EventHandler(frmMain_Shown);
+
+        }
+
+        void frmMain_Shown(object sender, EventArgs e)
+        {
+            string path = Application.StartupPath;
+            this.axShockwaveFlash1.Movie = path + @"\flash.swf";
         }
 
         private void lbtnGis_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -172,7 +186,7 @@ namespace LogisTechBase
         private void 标签分发ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmRfidCheck_Write frmW = new FrmRfidCheck_Write();
-            frmW.Show();
+            frmW.ShowDialog();
         }
 
         private void 考勤学生端ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -244,7 +258,7 @@ namespace LogisTechBase
         private void zigToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmZigbeeGraph fzigbee = new frmZigbeeGraph();
-            fzigbee.Show();
+            fzigbee.ShowDialog();
         }
 
         private void 协议分析ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -379,6 +393,59 @@ SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.GSM模块串口设�
         private void 系统设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSysSettings frm = new frmSysSettings();
+            frm.ShowDialog();
+        }
+
+        private void gPSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGPSReceiver frm = new frmGPSReceiver();
+            frm.ShowDialog();
+        }
+
+        private void 退出QToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void 基于条码技术的仓储管理系统实验BToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InventoryMSystemBarcode.Form1 frm = new InventoryMSystemBarcode.Form1();
+            frm.ShowDialog();
+        }
+
+        private void 基于超高频RFID的仓储管理系统RToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InventoryMSystem.Form1 frm = new InventoryMSystem.Form1();
+            frm.ShowDialog();
+        }
+
+        private void 基于高频RFID的停车场管理系统HToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CarPartingManagementSys.frmCarParting frm = new CarPartingManagementSys.frmCarParting();
+            frm.ShowDialog();
+        }
+
+        private void 基于物流信息技术的生产物流管理系统PToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProducingManagementSys.Form1 frm = new ProducingManagementSys.Form1();
+            frm.ShowDialog();
+        }
+
+        private void gISGPS数据采集与分析管理系统GToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGPSReceiver frm = new frmGPSReceiver();
+            frm.ShowDialog();
+        }
+
+        private void gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGPSMonitoring frm = new frmGPSMonitoring();
+            frm.ShowDialog();
+        }
+
+        private void 仓库环境监测管理系统MToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEnvironmentMonitoring frm = new frmEnvironmentMonitoring();
             frm.ShowDialog();
         }
 

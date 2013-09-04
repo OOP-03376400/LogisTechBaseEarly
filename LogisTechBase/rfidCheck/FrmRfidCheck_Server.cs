@@ -17,17 +17,19 @@ using AsynchronousSocket;
 
 namespace LogisTechBase
 {
-   
+
     public partial class FrmRfidCheck_Server : Form
     {
         #region Members
         RFIDHelper _RFIDHelper = new RFIDHelper();
 
         SerialPort comport = new SerialPort();
+        ISerialPortConfigItem ispc =
+  SerialPortConfigItem.GetConfigItem(SerialPortConfigItemName.超高频RFID串口设置);
         List<byte> maxbuf = new List<byte>();
         List<string> epcList = new List<string>();//记录读到的epc
         public static ManualResetEvent EventEPCList = new ManualResetEvent(true);
-        public static ManualResetEvent  EventControlInvoke = new ManualResetEvent(true);
+        public static ManualResetEvent EventControlInvoke = new ManualResetEvent(true);
         public static ManualResetEvent EventIdList_Temp = new ManualResetEvent(true);
         public static ManualResetEvent EventSerialPortCallback = new ManualResetEvent(true);
 
@@ -45,11 +47,11 @@ namespace LogisTechBase
         bool AddEPC2List(string strEpc)
         {
 
-            EventEPCList.WaitOne(1000,false);
+            EventEPCList.WaitOne(1000, false);
             EventEPCList.Reset();// 防止多线程干扰
             bool bR = false;
 
-            if (epcList.Count>0)
+            if (epcList.Count > 0)
             {
                 if (epcList[0] != strEpc)
                 {
@@ -61,7 +63,7 @@ namespace LogisTechBase
             {
                 epcList.Add(strEpc);
             }
-            if (epcList.Count>5)
+            if (epcList.Count > 5)
             {
                 epcList.Clear();
                 bR = true;
@@ -139,7 +141,7 @@ namespace LogisTechBase
                 bValue = true;
             }
             this.btnReadRfid.Enabled = bValue;
-            
+
             _UpdateList.SetItem("UpdateStartRfidCheckButton", true);
         }
         void UpdateStatusLable(string value)
@@ -196,13 +198,13 @@ namespace LogisTechBase
                     }
                     else
                         if ((string)o != "ok")
-                    {
-                        value = "读取到标签：" + (string)o;
-                        //string id = ((string)o).Substring(4, 6);
-                        string epc = RFIDHelper.GetEPCFormUII((string)o);
-                        AddNewIDToCheckRecordList_Temp(epc);
-                        UpdateCheckListControl(null);
-                    }
+                        {
+                            value = "读取到标签：" + (string)o;
+                            //string id = ((string)o).Substring(4, 6);
+                            string epc = RFIDHelper.GetEPCFormUII((string)o);
+                            AddNewIDToCheckRecordList_Temp(epc);
+                            UpdateCheckListControl(null);
+                        }
                     if (this.labelStatus.InvokeRequired)
                     {
                         this.labelStatus.Invoke(new deleUpdateContorl(UpdateStatusLable), value);
@@ -257,7 +259,8 @@ namespace LogisTechBase
             {
                 if (!comport.IsOpen)
                 {
-                    ConfigManager.SetSerialPort(ref comport);
+                    ConfigManager.SetSerialPort(ref comport, this.ispc);
+                    //ConfigManager.SetSerialPort(ref comport);
                     comport.Open();
 
                 }
@@ -292,7 +295,7 @@ namespace LogisTechBase
         private void FrmRfidCheck_Server_Load(object sender, EventArgs e)
         {
 
-            this.labelStatus.Text =  "服务未运行";
+            this.labelStatus.Text = "服务未运行";
 
             //this.checkRecordList_temp = rfidCheck_CheckOn.GetCheckRecords(DateTime.Today.ToShortDateString());
             this.personList = rfidCheck_CheckOn.GetPersonList();
@@ -328,7 +331,7 @@ namespace LogisTechBase
                     rfidCheck_CheckOn.AddCheckRecord(checkRecordList_temp[i]);
                 }
             }
- 
+
         }
         void InvokeCheckListControl(object o)
         {
@@ -435,7 +438,7 @@ namespace LogisTechBase
         }
         bool CheckIdList_TempExist(string newID)
         {
-            EventIdList_Temp.WaitOne(1000,false);
+            EventIdList_Temp.WaitOne(1000, false);
             EventIdList_Temp.Reset();
 
             bool bExist = false;
@@ -456,7 +459,7 @@ namespace LogisTechBase
         }
         void AddNewIDToCheckRecordList_Temp(string newID)
         {
-            EventIdList_Temp.WaitOne(1000,false);
+            EventIdList_Temp.WaitOne(1000, false);
             EventIdList_Temp.Reset();
 
             bool bAdd = true;
@@ -470,8 +473,8 @@ namespace LogisTechBase
             }
             if (bAdd)
             {
-                string strDateTime =  rfidCheck_CheckOn.GetFormatDateTimeString(DateTime.Now);
-                checkRecordList_temp.Add(new CheckRecord(newID,strDateTime));
+                string strDateTime = rfidCheck_CheckOn.GetFormatDateTimeString(DateTime.Now);
+                checkRecordList_temp.Add(new CheckRecord(newID, strDateTime));
             }
 
             EventIdList_Temp.Set();
@@ -483,7 +486,7 @@ namespace LogisTechBase
                 this.AddNewIDToCheckRecordList_Temp(id);
                 EventControlInvoke.WaitOne();
 
-                this.Invoke(new deleControlInvoke(this.UpdateCheckListControl),id);
+                this.Invoke(new deleControlInvoke(this.UpdateCheckListControl), id);
             }
             EventSerialPortCallback.Set();
         }
@@ -505,7 +508,7 @@ namespace LogisTechBase
         {
             int nPort = 13000;
             Regex r = new Regex(@"\d[1-9]\d{1,4}");
-            
+
             if (r.IsMatch(this.txtPort.Text))
             {
                 try
@@ -561,7 +564,7 @@ namespace LogisTechBase
 
         private void btn_stopserver_Click_1(object sender, EventArgs e)
         {
-            if (null!=this.listener)
+            if (null != this.listener)
             {
                 listener.StopListener();
                 listener = null;

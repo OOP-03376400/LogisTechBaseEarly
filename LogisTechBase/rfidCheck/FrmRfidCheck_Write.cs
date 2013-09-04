@@ -162,18 +162,18 @@ namespace LogisTechBase.rfidCheck
                     UpdateStatus(value);
                     break;
                 case (int)RFIDEventType.RMU_StopGet:
-                    //this.CheckIfEPCUsed();
-                    string readCommand =
-                            RFIDHelper.RmuReadDataCommandComposer(
-                                RMU_CommandType.RMU_SingleReadData
-                                   , "12345678",
-                                   0,
-                                   2,
-                                   2,
-                                   null);
-                    _RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
-                    value = "检查标签是否可以使用...";
-                    UpdateStatus(value);
+                    this.CheckIfEPCUsed();
+                    //string readCommand =
+                    //        RFIDHelper.RmuReadDataCommandComposer(
+                    //            RMU_CommandType.RMU_SingleReadData
+                    //               , "12345678",
+                    //               0,
+                    //               2,
+                    //               2,
+                    //               null);
+                    //_RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
+                    //value = "检查标签是否可以使用...";
+                    //UpdateStatus(value);
                     break;
                 case (int)RFIDEventType.RMU_SingleReadData:
                     if (null != o)

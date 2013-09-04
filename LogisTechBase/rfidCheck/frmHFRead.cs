@@ -182,12 +182,21 @@ string.Format("frmHFRead._timer_Tick  ->  = {0}"
                             tagID = currentData.Substring(ileft + 1, iright - ileft - 1);
                             if (tagID.Length > 0)
                             {
-                                this.Invoke(new deleControlInvoke(receiveNewTagInfo), new HFTagInfo(strPro, tagID));
+                                int dindex = tagID.IndexOf(",");
+                                if (dindex >= 0)
+                                {
+                                    tagID = tagID.Substring(0, dindex);
+                                    if (tagID != null && tagID.Length > 0)
+                                    {
+                                        Debug.WriteLine(
+                                                        string.Format("frmHFRead.comport_DataReceived  -> tagID = {0}"
+                                                        , tagID));
+                                        this.Invoke(new deleControlInvoke(receiveNewTagInfo), new HFTagInfo(strPro, tagID));
+                                    }
+                                }
 
                             }
-                            Debug.WriteLine(
-                                string.Format("frmHFRead.comport_DataReceived  -> tagID = {0}"
-                                , tagID));
+
                             buffer.Remove(0, iright + 1);
                         }
                     }

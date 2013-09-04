@@ -41,19 +41,20 @@
             this.MIGPRS应用实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.gPRS实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gPS数据分析实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gPSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.地图操作实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MI条码实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.一维条码实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.一维条码读取实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.一维条形码编码实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.条码模块协议分析实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.一维条码读取实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.二维条码实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.二维条码编码实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.二维条码解码实验ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.MIRFID实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi1356MHzRFID系统实验 = new System.Windows.Forms.ToolStripMenuItem();
-            this.高频RFID协议实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.高频RFIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.高频RFID协议实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi超高频RFID系统的操作实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.标签读取实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.通信分析试验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,8 +64,8 @@
             this.地图操作实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGPS通讯实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.MIZigbee实验 = new System.Windows.Forms.ToolStripMenuItem();
-            this.协议分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.协议分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MI综合实验 = new System.Windows.Forms.ToolStripMenuItem();
             this.学生管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.考勤服务端ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,8 +78,17 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslbNetState = new System.Windows.Forms.ToolStripStatusLabel();
+            this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
+            this.基于条码技术的仓储管理系统实验BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.基于超高频RFID的仓储管理系统RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.基于高频RFID的停车场管理系统HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.基于物流信息技术的生产物流管理系统PToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gISGPS数据采集与分析管理系统GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.仓库环境监测管理系统MToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -96,7 +106,7 @@
             this.MenuItemAbout});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(792, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(863, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -112,15 +122,16 @@
             // 系统设置ToolStripMenuItem
             // 
             this.系统设置ToolStripMenuItem.Name = "系统设置ToolStripMenuItem";
-            this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.系统设置ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.系统设置ToolStripMenuItem.Text = "系统设置(&S)";
             this.系统设置ToolStripMenuItem.Click += new System.EventHandler(this.系统设置ToolStripMenuItem_Click);
             // 
             // 退出QToolStripMenuItem
             // 
             this.退出QToolStripMenuItem.Name = "退出QToolStripMenuItem";
-            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出QToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.退出QToolStripMenuItem.Text = "退出(&Q)";
+            this.退出QToolStripMenuItem.Click += new System.EventHandler(this.退出QToolStripMenuItem_Click);
             // 
             // MI网络通信实验
             // 
@@ -167,10 +178,11 @@
             this.MIGPRS应用实验.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gPRS实验ToolStripMenuItem,
             this.gPS数据分析实验ToolStripMenuItem,
+            this.gPSToolStripMenuItem,
             this.地图操作实验ToolStripMenuItem});
             this.MIGPRS应用实验.Name = "MIGPRS应用实验";
-            this.MIGPRS应用实验.Size = new System.Drawing.Size(77, 21);
-            this.MIGPRS应用实验.Text = "3G实验(&G)";
+            this.MIGPRS应用实验.Size = new System.Drawing.Size(121, 21);
+            this.MIGPRS应用实验.Text = "GPS/GPRS/GIS(&G)";
             this.MIGPRS应用实验.Click += new System.EventHandler(this.MIGPRS应用实验_Click);
             // 
             // gPRS实验ToolStripMenuItem
@@ -186,6 +198,14 @@
             this.gPS数据分析实验ToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.gPS数据分析实验ToolStripMenuItem.Text = "GPS 数据分析实验(&S)";
             this.gPS数据分析实验ToolStripMenuItem.Click += new System.EventHandler(this.gPS数据分析实验ToolStripMenuItem_Click_1);
+            // 
+            // gPSToolStripMenuItem
+            // 
+            this.gPSToolStripMenuItem.Name = "gPSToolStripMenuItem";
+            this.gPSToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.gPSToolStripMenuItem.Text = "GPS数据接收实验(&R)";
+            this.gPSToolStripMenuItem.Visible = false;
+            this.gPSToolStripMenuItem.Click += new System.EventHandler(this.gPSToolStripMenuItem_Click);
             // 
             // 地图操作实验ToolStripMenuItem
             // 
@@ -213,6 +233,13 @@
             this.一维条码实验ToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.一维条码实验ToolStripMenuItem.Text = "一维条码实验(&D)";
             // 
+            // 一维条码读取实验ToolStripMenuItem
+            // 
+            this.一维条码读取实验ToolStripMenuItem.Name = "一维条码读取实验ToolStripMenuItem";
+            this.一维条码读取实验ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.一维条码读取实验ToolStripMenuItem.Text = "条码读取(&R)";
+            this.一维条码读取实验ToolStripMenuItem.Click += new System.EventHandler(this.一维条码读取实验ToolStripMenuItem_Click);
+            // 
             // 一维条形码编码实验ToolStripMenuItem
             // 
             this.一维条形码编码实验ToolStripMenuItem.Name = "一维条形码编码实验ToolStripMenuItem";
@@ -226,13 +253,6 @@
             this.条码模块协议分析实验ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.条码模块协议分析实验ToolStripMenuItem.Text = "条码模块协议分析(&A)";
             this.条码模块协议分析实验ToolStripMenuItem.Click += new System.EventHandler(this.条码模块协议分析实验ToolStripMenuItem_Click);
-            // 
-            // 一维条码读取实验ToolStripMenuItem
-            // 
-            this.一维条码读取实验ToolStripMenuItem.Name = "一维条码读取实验ToolStripMenuItem";
-            this.一维条码读取实验ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.一维条码读取实验ToolStripMenuItem.Text = "条码读取(&R)";
-            this.一维条码读取实验ToolStripMenuItem.Click += new System.EventHandler(this.一维条码读取实验ToolStripMenuItem_Click);
             // 
             // 二维条码实验ToolStripMenuItem
             // 
@@ -275,19 +295,19 @@
             this.tsmi1356MHzRFID系统实验.Size = new System.Drawing.Size(208, 22);
             this.tsmi1356MHzRFID系统实验.Text = "高频RFID系统实验(&F)";
             // 
-            // 高频RFID协议实验ToolStripMenuItem
-            // 
-            this.高频RFID协议实验ToolStripMenuItem.Name = "高频RFID协议实验ToolStripMenuItem";
-            this.高频RFID协议实验ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.高频RFID协议实验ToolStripMenuItem.Text = "通信协议分析实验(&A)";
-            this.高频RFID协议实验ToolStripMenuItem.Click += new System.EventHandler(this.高频RFID协议实验ToolStripMenuItem_Click);
-            // 
             // 高频RFIDToolStripMenuItem
             // 
             this.高频RFIDToolStripMenuItem.Name = "高频RFIDToolStripMenuItem";
             this.高频RFIDToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.高频RFIDToolStripMenuItem.Text = "标签读取实验(&R)";
             this.高频RFIDToolStripMenuItem.Click += new System.EventHandler(this.高频RFIDToolStripMenuItem_Click);
+            // 
+            // 高频RFID协议实验ToolStripMenuItem
+            // 
+            this.高频RFID协议实验ToolStripMenuItem.Name = "高频RFID协议实验ToolStripMenuItem";
+            this.高频RFID协议实验ToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.高频RFID协议实验ToolStripMenuItem.Text = "通信协议分析实验(&A)";
+            this.高频RFID协议实验ToolStripMenuItem.Click += new System.EventHandler(this.高频RFID协议实验ToolStripMenuItem_Click);
             // 
             // tsmi超高频RFID系统的操作实验
             // 
@@ -362,13 +382,6 @@
             this.MIZigbee实验.Size = new System.Drawing.Size(99, 21);
             this.MIZigbee实验.Text = "Zigbee实验(&Z)";
             // 
-            // 协议分析ToolStripMenuItem
-            // 
-            this.协议分析ToolStripMenuItem.Name = "协议分析ToolStripMenuItem";
-            this.协议分析ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.协议分析ToolStripMenuItem.Text = "Zigbee协议分析(&A)";
-            this.协议分析ToolStripMenuItem.Click += new System.EventHandler(this.协议分析ToolStripMenuItem_Click);
-            // 
             // zigToolStripMenuItem
             // 
             this.zigToolStripMenuItem.Name = "zigToolStripMenuItem";
@@ -376,12 +389,26 @@
             this.zigToolStripMenuItem.Text = "Zigbee数据采集(&C)";
             this.zigToolStripMenuItem.Click += new System.EventHandler(this.zigToolStripMenuItem_Click);
             // 
+            // 协议分析ToolStripMenuItem
+            // 
+            this.协议分析ToolStripMenuItem.Name = "协议分析ToolStripMenuItem";
+            this.协议分析ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.协议分析ToolStripMenuItem.Text = "Zigbee协议分析(&A)";
+            this.协议分析ToolStripMenuItem.Click += new System.EventHandler(this.协议分析ToolStripMenuItem_Click);
+            // 
             // MI综合实验
             // 
+            this.MI综合实验.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.基于条码技术的仓储管理系统实验BToolStripMenuItem,
+            this.基于超高频RFID的仓储管理系统RToolStripMenuItem,
+            this.基于高频RFID的停车场管理系统HToolStripMenuItem,
+            this.基于物流信息技术的生产物流管理系统PToolStripMenuItem,
+            this.gISGPS数据采集与分析管理系统GToolStripMenuItem,
+            this.gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem,
+            this.仓库环境监测管理系统MToolStripMenuItem});
             this.MI综合实验.Name = "MI综合实验";
-            this.MI综合实验.Size = new System.Drawing.Size(68, 21);
-            this.MI综合实验.Text = "综合实验";
-            this.MI综合实验.Visible = false;
+            this.MI综合实验.Size = new System.Drawing.Size(83, 21);
+            this.MI综合实验.Text = "综合实验(&S)";
             // 
             // 学生管理ToolStripMenuItem1
             // 
@@ -442,7 +469,7 @@
             // 关于AToolStripMenuItem
             // 
             this.关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
-            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.关于AToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关于AToolStripMenuItem.Text = "关于(&A)";
             this.关于AToolStripMenuItem.Click += new System.EventHandler(this.关于AToolStripMenuItem_Click);
             // 
@@ -456,6 +483,7 @@
             this.statusStrip1.Size = new System.Drawing.Size(792, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
             // 
             // toolStripStatusLabel1
             // 
@@ -469,13 +497,73 @@
             this.tsslbNetState.Size = new System.Drawing.Size(32, 17);
             this.tsslbNetState.Text = "正常";
             // 
+            // axShockwaveFlash1
+            // 
+            this.axShockwaveFlash1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axShockwaveFlash1.Enabled = true;
+            this.axShockwaveFlash1.Location = new System.Drawing.Point(0, 0);
+            this.axShockwaveFlash1.Name = "axShockwaveFlash1";
+            this.axShockwaveFlash1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axShockwaveFlash1.OcxState")));
+            this.axShockwaveFlash1.Size = new System.Drawing.Size(863, 573);
+            this.axShockwaveFlash1.TabIndex = 4;
+            // 
+            // 基于条码技术的仓储管理系统实验BToolStripMenuItem
+            // 
+            this.基于条码技术的仓储管理系统实验BToolStripMenuItem.Name = "基于条码技术的仓储管理系统实验BToolStripMenuItem";
+            this.基于条码技术的仓储管理系统实验BToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.基于条码技术的仓储管理系统实验BToolStripMenuItem.Text = "基于条码技术的仓储管理系统实验(&B)";
+            this.基于条码技术的仓储管理系统实验BToolStripMenuItem.Click += new System.EventHandler(this.基于条码技术的仓储管理系统实验BToolStripMenuItem_Click);
+            // 
+            // 基于超高频RFID的仓储管理系统RToolStripMenuItem
+            // 
+            this.基于超高频RFID的仓储管理系统RToolStripMenuItem.Name = "基于超高频RFID的仓储管理系统RToolStripMenuItem";
+            this.基于超高频RFID的仓储管理系统RToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.基于超高频RFID的仓储管理系统RToolStripMenuItem.Text = "基于超高频RFID的仓储管理系统(&R)";
+            this.基于超高频RFID的仓储管理系统RToolStripMenuItem.Click += new System.EventHandler(this.基于超高频RFID的仓储管理系统RToolStripMenuItem_Click);
+            // 
+            // 基于高频RFID的停车场管理系统HToolStripMenuItem
+            // 
+            this.基于高频RFID的停车场管理系统HToolStripMenuItem.Name = "基于高频RFID的停车场管理系统HToolStripMenuItem";
+            this.基于高频RFID的停车场管理系统HToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.基于高频RFID的停车场管理系统HToolStripMenuItem.Text = "基于高频RFID的停车场管理系统(&H)";
+            this.基于高频RFID的停车场管理系统HToolStripMenuItem.Click += new System.EventHandler(this.基于高频RFID的停车场管理系统HToolStripMenuItem_Click);
+            // 
+            // 基于物流信息技术的生产物流管理系统PToolStripMenuItem
+            // 
+            this.基于物流信息技术的生产物流管理系统PToolStripMenuItem.Name = "基于物流信息技术的生产物流管理系统PToolStripMenuItem";
+            this.基于物流信息技术的生产物流管理系统PToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.基于物流信息技术的生产物流管理系统PToolStripMenuItem.Text = "基于物流信息技术的生产物流管理系统(&P)";
+            this.基于物流信息技术的生产物流管理系统PToolStripMenuItem.Click += new System.EventHandler(this.基于物流信息技术的生产物流管理系统PToolStripMenuItem_Click);
+            // 
+            // gISGPS数据采集与分析管理系统GToolStripMenuItem
+            // 
+            this.gISGPS数据采集与分析管理系统GToolStripMenuItem.Name = "gISGPS数据采集与分析管理系统GToolStripMenuItem";
+            this.gISGPS数据采集与分析管理系统GToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.gISGPS数据采集与分析管理系统GToolStripMenuItem.Text = "GIS/GPS数据采集与分析管理系统(&G)";
+            this.gISGPS数据采集与分析管理系统GToolStripMenuItem.Click += new System.EventHandler(this.gISGPS数据采集与分析管理系统GToolStripMenuItem_Click);
+            // 
+            // gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem
+            // 
+            this.gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem.Name = "gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem";
+            this.gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem.Text = "GPS/GPRS/GIS物流运输监控管理系统";
+            this.gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem.Click += new System.EventHandler(this.gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem_Click);
+            // 
+            // 仓库环境监测管理系统MToolStripMenuItem
+            // 
+            this.仓库环境监测管理系统MToolStripMenuItem.Name = "仓库环境监测管理系统MToolStripMenuItem";
+            this.仓库环境监测管理系统MToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.仓库环境监测管理系统MToolStripMenuItem.Text = "仓库环境监测管理系统(&M)";
+            this.仓库环境监测管理系统MToolStripMenuItem.Click += new System.EventHandler(this.仓库环境监测管理系统MToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 566);
+            this.ClientSize = new System.Drawing.Size(863, 573);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.axShockwaveFlash1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -483,11 +571,12 @@
             this.MinimizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "物流信息技术实验平台(教师端)";
+            this.Text = "物流信息技术与信息管理(教师端)";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,6 +632,15 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem系统;
         private System.Windows.Forms.ToolStripMenuItem 系统设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出QToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gPSToolStripMenuItem;
+        private AxShockwaveFlashObjects.AxShockwaveFlash axShockwaveFlash1;
+        private System.Windows.Forms.ToolStripMenuItem 基于条码技术的仓储管理系统实验BToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 基于超高频RFID的仓储管理系统RToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 基于高频RFID的停车场管理系统HToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 基于物流信息技术的生产物流管理系统PToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gISGPS数据采集与分析管理系统GToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gPSGPRSGIS物流运输监控管理系统ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 仓库环境监测管理系统MToolStripMenuItem;
     }
 }
 

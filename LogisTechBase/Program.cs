@@ -16,6 +16,7 @@ namespace LogisTechBase
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogisTechBase.frmMainStudent());
             Application.Run(new LogisTechBase.frmMain());
+            //Application.Run(new frmcheckMain());
         }
     }
 }

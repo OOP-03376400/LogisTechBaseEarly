@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using ZedGraph;
 using System.Threading;
+using System.Diagnostics;
 
 namespace LogisTechBase
 {
@@ -81,15 +82,20 @@ namespace LogisTechBase
                 return;
             }
             _InvokeList.SetItem("UpdatetxtLog", false);
-
+            Debug.WriteLine(
+             string.Format("frmZigbeeGraph.HandletxtLog  ->  = {0}"
+             , "false"));
             this.txtLog.Invoke(new delZigbeeCallback(UpdatetxtLog), index, nodeID, humi, temp);
 
         }
         void UpdatetxtLog(int index, int nodeID, int humi, int temp)
         {
             txtLogInvoke(index, nodeID, humi, temp);
-            _InvokeList.SetItem("UpdatetxtLog", true);
 
+            _InvokeList.SetItem("UpdatetxtLog", true);
+            Debug.WriteLine(
+                string.Format("frmZigbeeGraph.UpdatetxtLog  ->  = {0}"
+                , "true"));
         }
         void HandleZigbeeData(int index, int nodeID, int humi, int temp)
         {
@@ -98,7 +104,9 @@ namespace LogisTechBase
                 return;
             }
             _InvokeList.SetItem("UpdateZigbeeData", false);
-
+            Debug.WriteLine(
+            	string.Format("frmZigbeeGraph.HandleZigbeeData  ->  = {0}"
+            	, "false"));
             this.zedGraphControl1.Invoke(
                 new delZigbeeCallback(UpdateZigbeeData), index, nodeID, humi, temp);
 
@@ -107,6 +115,9 @@ namespace LogisTechBase
         {
             HelperInvoke(index, nodeID, humi, temp);
             _InvokeList.SetItem("UpdateZigbeeData", true);
+            Debug.WriteLine(
+            	string.Format("frmZigbeeGraph.UpdateZigbeeData  ->  = {0}"
+            	, "true"));
         }
         void txtLogInvoke(int index, int nodeID, int humi, int temp)
         {
@@ -115,7 +126,7 @@ namespace LogisTechBase
             //                    , index.ToString(), nodeID.ToString(), humi.ToString(), temp.ToString());
             this.txtLog.Text =
                     string.Format(" {0}  数据包号：{1} 节点ID：{2} 湿度：{3} 温度：{4}\r\n"
-                    , DateTime.Now.ToShortTimeString()+":"+DateTime.Now.Second.ToString(),
+                    , DateTime.Now.ToShortTimeString() + ":" + DateTime.Now.Second.ToString(),
                     index.ToString(),
                     nodeID.ToString(),
                     humi.ToString(),
@@ -133,7 +144,7 @@ namespace LogisTechBase
             double y = humi;
             switch (comboBox1.SelectedIndex)
             {
-                case 0:
+                case 0://湿度
                     y = humi;
                     //tempInfo = humiCurveInfo;
                     tempList = humiCurveInfoList;
@@ -148,7 +159,7 @@ namespace LogisTechBase
                         tempInfo = ciNew;
                     }
                     break;
-                case 1:
+                case 1://温度
                     y = temp;
                     tempList = tempetureCurveInfoList;
                     //tempInfo = tempCurveInfo;
@@ -278,7 +289,7 @@ namespace LogisTechBase
             myPane.XAxis.MajorGrid.Color = Color.LightGray;
             myPane.YAxis.MajorGrid.Color = Color.LightGray;
 
-            myPane.XAxis.Type = ZedGraph.AxisType.DateAsOrdinal; 
+            myPane.XAxis.Type = ZedGraph.AxisType.DateAsOrdinal;
             //myPane.XAxis.Type = ZedGraph.AxisType.Date; 
 
             myPane.XAxis.Scale.Format = "HH:mm:ss";   //DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") 

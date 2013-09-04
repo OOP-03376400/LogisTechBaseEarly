@@ -150,6 +150,7 @@
             "19200",
             "28800",
             "36000",
+            "38400",
             "57600",
             "115200"});
             this.cmbBaudRate.Location = new System.Drawing.Point(18, 95);

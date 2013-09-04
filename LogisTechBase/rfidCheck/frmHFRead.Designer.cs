@@ -124,7 +124,7 @@
             this.ckb14443b.AutoSize = true;
             this.ckb14443b.Checked = true;
             this.ckb14443b.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb14443b.Location = new System.Drawing.Point(7, 87);
+            this.ckb14443b.Location = new System.Drawing.Point(7, 61);
             this.ckb14443b.Name = "ckb14443b";
             this.ckb14443b.Size = new System.Drawing.Size(84, 16);
             this.ckb14443b.TabIndex = 0;
@@ -136,7 +136,7 @@
             this.ckb14443a.AutoSize = true;
             this.ckb14443a.Checked = true;
             this.ckb14443a.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb14443a.Location = new System.Drawing.Point(7, 65);
+            this.ckb14443a.Location = new System.Drawing.Point(7, 39);
             this.ckb14443a.Name = "ckb14443a";
             this.ckb14443a.Size = new System.Drawing.Size(84, 16);
             this.ckb14443a.TabIndex = 0;
@@ -148,7 +148,7 @@
             this.ckb15693.AutoSize = true;
             this.ckb15693.Checked = true;
             this.ckb15693.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb15693.Location = new System.Drawing.Point(7, 43);
+            this.ckb15693.Location = new System.Drawing.Point(7, 17);
             this.ckb15693.Name = "ckb15693";
             this.ckb15693.Size = new System.Drawing.Size(78, 16);
             this.ckb15693.TabIndex = 0;
@@ -158,14 +158,13 @@
             // ckbTagit
             // 
             this.ckbTagit.AutoSize = true;
-            this.ckbTagit.Checked = true;
-            this.ckbTagit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbTagit.Location = new System.Drawing.Point(7, 21);
+            this.ckbTagit.Location = new System.Drawing.Point(8, 109);
             this.ckbTagit.Name = "ckbTagit";
             this.ckbTagit.Size = new System.Drawing.Size(84, 16);
             this.ckbTagit.TabIndex = 0;
             this.ckbTagit.Text = "TAG-IT协议";
             this.ckbTagit.UseVisualStyleBackColor = true;
+            this.ckbTagit.Visible = false;
             // 
             // ProgressControl1
             // 

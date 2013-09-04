@@ -57,17 +57,17 @@ namespace LogisTechBase.rfidCheck
 
         void _time_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            string readCommand =
-            RFIDHelper.RmuReadDataCommandComposer(
-                    RMU_CommandType.RMU_SingleReadData
-                       , "12345678",
-                       0,
-                       2,
-                       2,
-                       null);
-            _RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
+            //string readCommand =
+            //RFIDHelper.RmuReadDataCommandComposer(
+            //        RMU_CommandType.RMU_SingleReadData
+            //           , "12345678",
+            //           0,
+            //           2,
+            //           2,
+            //           null);
+            //_RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
 
-            //_RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_GetStatus, RFIDEventType.RMU_CardIsReady);
+            _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_GetStatus, RFIDEventType.RMU_CardIsReady);
         }
 
         void FrmRfidCheck_Client_Shown(object sender, EventArgs e)
@@ -98,32 +98,32 @@ namespace LogisTechBase.rfidCheck
                     }
                     break;
                 case (int)RFIDEventType.RMU_CardIsReady:
-                    //_RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_InventoryAnti3, RFIDEventType.RMU_InventoryAnti);
-                    value = "设备状态正常！";
-                    if (this.labelStatus.InvokeRequired)
-                    {
-                        this.labelStatus.Invoke(new deleUpdateContorl(UpdateStatusLable), value);
-                    }
-                    else
-                    {
-                        //this.statusLabel.Text = value;
-                        UpdateStatusLable(value);
-                    }
-                    secret = ConfigManager.GetLockMemSecret();
-                    if (secret == null)
-                    {
-                        secret = "12345678";
-                    }
+                    _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_InventoryAnti3, RFIDEventType.RMU_InventoryAnti);
+                    //value = "设备状态正常！";
+                    //if (this.labelStatus.InvokeRequired)
+                    //{
+                    //    this.labelStatus.Invoke(new deleUpdateContorl(UpdateStatusLable), value);
+                    //}
+                    //else
+                    //{
+                    //    //this.statusLabel.Text = value;
+                    //    UpdateStatusLable(value);
+                    //}
+                    //secret = ConfigManager.GetLockMemSecret();
+                    //if (secret == null)
+                    //{
+                    //    secret = "12345678";
+                    //}
 
-                    readCommand =
-                             RFIDHelper.RmuReadDataCommandComposer(
-                                 RMU_CommandType.RMU_SingleReadData
-                                    , secret,
-                                    0,
-                                    2,
-                                    2,
-                                    null);
-                    _RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
+                    //readCommand =
+                    //         RFIDHelper.RmuReadDataCommandComposer(
+                    //             RMU_CommandType.RMU_SingleReadData
+                    //                , secret,
+                    //                0,
+                    //                2,
+                    //                2,
+                    //                null);
+                    //_RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
                     break;
                 case (int)RFIDEventType.RMU_InventoryAnti:
                     this.bRfidCheckClosed = false;
@@ -142,25 +142,27 @@ namespace LogisTechBase.rfidCheck
                     else
                         if ((string)o != "ok")
                         {
+                            string id = RFIDHelper.GetEPCFormUII((string)o);
                             //string id = RFIDHelper.GetIDFromEPC((string)o); 
-                            //value = "读取到学号：" + id;
-                            value = "读取到标签：" + (string)o;
-                            secret = ConfigManager.GetLockMemSecret();
-                            if (secret == null)
-                            {
-                                secret = "12345678";
-                            }
-                            //读取密码段
-                           readCommand = 
-                                RFIDHelper.RmuReadDataCommandComposer(
-                                                    RMU_CommandType.RMU_SingleReadData
-                                                       , secret,
-                                                       0,
-                                                       2,
-                                                       2,
-                                                       null);
-                            _RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
-                            //CheckToRemoteServer(id);
+                            value = "读取到学号：" + id;
+                           // value = "读取到标签：" + (string)o;
+                           // secret = ConfigManager.GetLockMemSecret();
+                           // if (secret == null)
+                           // {
+                           //     secret = "12345678";
+                           // }
+                           // //读取密码段
+                           //readCommand = 
+                           //     RFIDHelper.RmuReadDataCommandComposer(
+                           //                         RMU_CommandType.RMU_SingleReadData
+                           //                            , secret,
+                           //                            0,
+                           //                            2,
+                           //                            2,
+                           //                            null);
+                           // _RFIDHelper.SendCommand(readCommand, RFIDEventType.RMU_SingleReadData);
+
+                            CheckToRemoteServer(id);
 
                         }
                     if (this.labelStatus.InvokeRequired)
@@ -233,11 +235,12 @@ namespace LogisTechBase.rfidCheck
 
         private void StartReadRFIDTag()
         {
-            _timer.Start();
+            _RFIDHelper.SendCommand(RFIDHelper.RFIDCommand_RMU_GetStatus, RFIDEventType.RMU_CardIsReady);
+//            _timer.Start();
         }
         private void StopReadRFIDTag()
         {
-            _timer.Stop();
+  //          _timer.Stop();
         }
         void UpdateButton1(string value)
         {
